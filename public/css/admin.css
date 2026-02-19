@@ -1,0 +1,326 @@
+                 /* =========================
+   Admin Panel CSS
+   ========================= */
+
+/* Wrapper: sidebar + main content */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f4f6; /* light gray background */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #1e40af; /* blue sidebar */
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.sidebar-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.sidebar-nav a:hover {
+    background-color: #3b82f6; /* lighter blue on hover */
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: #f3f4f6;
+}
+
+/* Container for inner content */
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Heading */
+.admin-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1e40af;
+    font-size: 1.75rem;
+}
+
+/* Add Course Button */
+.add-course-btn {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.add-course-btn a {
+    background-color: #2563eb;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.add-course-btn a:hover {
+    background-color: #1d4ed8;
+}
+
+/* Courses Table */
+.courses-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.courses-table th,
+.courses-table td {
+    border: 1px solid #ddd;
+    padding: 12px 10px;
+    text-align: center;
+}
+
+.courses-table th {
+    background-color: #1e40af;
+    color: white;
+}
+
+.courses-table tr:nth-child(even) td {
+    background-color: #f9fafb;
+}
+
+.courses-table tr:hover td {
+    background-color: #e0f2fe;
+}
+
+/* Course Image */
+.course-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Status Badges */
+.status-active {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+/* Action Buttons */
+.actions .btn-edit,
+.actions .btn-delete {
+    padding: 5px 10px;
+    margin: 0 2px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.actions .btn-edit {
+    background-color: #10b981;
+}
+
+.actions .btn-edit:hover {
+    background-color: #059669;
+}
+
+.actions .btn-delete {
+    background-color: #ef4444;
+}
+
+.actions .btn-delete:hover {
+    background-color: #b91c1c;
+}
+
+/* Submit Button */
+.btn-submit {
+    background-color: #2563eb;
+    color: #fff;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #1d4ed8;
+}
+/* Form Table Styling */
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.form-table td {
+    padding: 10px 8px;
+    vertical-align: middle;
+}
+
+.form-table td:first-child {
+    text-align: right;
+    font-weight: bold;
+    width: 150px;
+}
+
+.form-table input[type="text"],
+.form-table input[type="number"],
+.form-table input[type="file"],
+.form-table select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 0.95rem;
+}
+
+.form-table input[type="text"]:focus,
+.form-table input[type="number"]:focus,
+.form-table select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 3px #2563eb;
+}
+/* ------------------ Topics Page ------------------ */
+.course-name {
+    font-size: 0.9rem;
+    color: #6b7280; /* subtle gray */
+}
+
+/* Form Card */
+.topic-form-card {
+    border-radius: 8px;
+}
+
+/* Form Inputs */
+.topic-form .form-control {
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+}
+
+/* Table Card */
+.topics-table-card {
+    border-radius: 8px;
+}
+
+/* Table */
+.topics-table th, .topics-table td {
+    vertical-align: middle;
+}
+
+/* Action Buttons - very light colors */
+.btn-edit {
+    background-color: #fef3c7;
+    color: #92400e;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.btn-delete {
+    background-color: #fee2e2;
+    color: #991b1b;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Table badges */
+.topics-table .badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Vertical spacing for form and table */
+.topic-form-card, .topics-table-card {
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .topic-form .form-control {
+        font-size: 0.875rem;
+    }
+    .btn-edit, .btn-delete {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+.course-skills {
+    font-size: 0.8rem;      /* thoda chhota font */
+    color: #6c757d;         /* thoda dim/dull color (bootstrap muted gray) */
+    margin-top: 2px;        /* course name se thoda gap */
+}
+/* Reuse Courses page color scheme for Categories page */
+
+/* Table cards */
+.courses-table thead {
+    background-color: #1e3a8a; /* dark blue header */
+    color: #fff;
+}
+
+/* Individual badges */
+.badge.bg-success {
+    background-color: #16a34a !important; /* green */
+    color: #fff;
+}
+
+.badge.bg-secondary {
+    background-color: #6b7280 !important; /* grey */
+    color: #fff;
+}
+
+/* Action buttons */
+.btn-add-course {
+    background-color: #2563eb;
+    color: #fff;
+}
+
+.btn-edit {
+    background-color: #fef3c7;
+    color: #92400e;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.btn-delete {
+    background-color: #fee2e2;
+    color: #991b1b;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Table rows */
+.courses-table tbody tr:hover {
+    background-color: #e0f2fe; /* light hover */
+}
