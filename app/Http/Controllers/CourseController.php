@@ -122,27 +122,43 @@ class CourseController extends Controller
     }
 
     // ================= FRONTEND METHOD =================
-    public function show($id)
-    {
-        $course = $this->db->courses->findOne([
-            '_id' => new ObjectId($id)
-        ]);
+  public function show($id)
+{
+    $course = $this->db->courses->findOne([
+        '_id' => new \MongoDB\BSON\ObjectId($id)
+    ]);
 
-        if (!$course) {
-            abort(404);
-        }
-
-        // Split skills/topics by comma and trim spaces
-        $topics = isset($course['skills']) ? array_map('trim', explode(',', $course['skills'])) : [];
-
-        // Fetch upcoming trainings for this course
-        $upcoming = $this->db->trainings
-            ->find([
-                'course_id' => $id,
-                'date' => ['$gte' => new \MongoDB\BSON\UTCDateTime()]
-            ], ['sort' => ['date' => 1]])
-            ->toArray();
-
-        return view('course-details', compact('course', 'topics', 'upcoming'));
+    if (!$course) {
+        abort(404);
     }
+
+    // Skills
+    $skills = isset($course['skills'])
+        ? array_map('trim', explode(',', $course['skills']))
+        : [];
+
+    // Topics (stored as string course_id)
+    $topics = $this->db->topics
+        ->find(['course_id' => (string) $id])
+        ->toArray();
+
+    // Upcoming trainings (IMPORTANT: use launch_dates collection)
+    $upcomingTrainings = $this->db->launch_dates
+        ->find([
+            'course_id' => new \MongoDB\BSON\ObjectId($id),
+            'launch_date' => ['$gte' => date('Y-m-d')]
+        ], [
+            'sort' => ['launch_date' => 1]
+        ])
+        ->toArray();
+
+    return view('course-details', compact(
+        'course',
+        'skills',
+        'topics',
+        'upcomingTrainings'
+    ));
+}
+
+
 }

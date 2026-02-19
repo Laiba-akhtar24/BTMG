@@ -1,4 +1,11 @@
 <style>
+   :root {
+    --theme-color: #007BFF;       /* primary blue */
+    --theme-color-light: #87CEFA; /* sky blue */
+    --theme-color-dark: #0056b3;  /* darker blue for hover */
+}
+
+/* Smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
@@ -13,7 +20,7 @@ footer,
     display: none !important;
 }
 
-/* PDF layout (used during download) */
+/* PDF layout */
 .pdf-layout .course-grid {
     display: block !important;
 }
@@ -23,9 +30,8 @@ footer,
     margin-bottom: 20px !important;
 }
 
-/* Print styles – hide extraneous elements, make all links plain text */
+/* Print styles */
 @media print {
-    /* Hide sidebar, footer, header, navigation, action bar */
     .sidebar,
     .footer,
     header,
@@ -39,7 +45,6 @@ footer,
         display: none !important;
     }
 
-    /* Ensure any remaining anchor tags (buttons) are plain text */
     a[class*="btn"],
     a.btn-primary,
     a.btn-outline,
@@ -57,7 +62,6 @@ footer,
         pointer-events: none !important;
     }
 
-    /* Hide icons inside buttons */
     a[class*="btn"] svg,
     .btn-primary svg,
     .btn-outline svg,
@@ -66,11 +70,11 @@ footer,
         display: none !important;
     }
 
-    /* Ensure main content stacks */
     #pdf-content,
     #pdf-content * {
         visibility: visible !important;
     }
+
     .course-grid {
         display: block !important;
     }
@@ -79,11 +83,11 @@ footer,
         width: 100% !important;
         margin-bottom: 20px !important;
     }
-    /* Remove any link underlines */
+
     a {
         text-decoration: none !important;
     }
-    /* Remove hover/focus effects */
+
     *:hover, *:focus {
         outline: none !important;
     }
@@ -99,11 +103,143 @@ footer,
 
 /* Style for the date container in upcoming trainings */
 .training-date {
-    background-color: #ffffff; /* match parent card background */
+    background-color: #ffffff;
 }
-a.btn-primary, a.btn-outline, .training-buttons a, .action-buttons a {
+
+/* Buttons */
+a.btn-primary,
+.training-buttons a.btn-primary,
+.action-buttons a.btn-primary {
+    background-color: var(--theme-color);
+    border-color: var(--theme-color);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+a.btn-outline,
+.training-buttons a.btn-outline,
+.action-buttons a.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--theme-color);
+    color: var(--theme-color);
+    cursor: pointer;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+a.btn-primary:hover,
+a.btn-outline:hover {
+    background-color: var(--theme-color-dark);
+    border-color: var(--theme-color-dark);
+    color: #fff;
+}
+
+/* Badges */
+.badge,
+.badge-pill {
+    background-color: var(--theme-color);
+    color: #fff;
+    font-weight: 500;
+}
+
+/* SVG icons */
+svg {
+    stroke: var(--theme-color);
+}
+
+/* Consent & disclaimer highlights */
+.consent-box .btmg-text {
+    color: var(--theme-color);
+}
+
+/* Top action bar icons */
+.top-action-bar a.action-link svg {
+    stroke: var(--theme-color);
+}
+
+/* PDF download button */
+.pdf-btn {
+    background-color: var(--theme-color);
+    color: #fff;
+}
+
+/* Hover/focus for links */
+a:hover,
+a:focus {
+    color: var(--theme-color-dark);
+}
+
+/* Meta info icons in course description */
+.course-meta svg {
+    stroke: var(--theme-color);
+}
+
+/* Snapshot card highlights */
+.snapshot-card .snapshot-detail svg {
+    stroke: var(--theme-color);
+}
+
+/* Training meta tags */
+.training-meta svg {
+    stroke: var(--theme-color);
+}
+.meta-tag {
+    color: var(--theme-color);
+}
+
+/* Inquiry & register modals buttons */
+.register-form button,
+#inquiryModal button,
+.register-btn {
+    background-color: var(--theme-color);
+    color: #fff;
+    border-radius: 6px;
+    border: none;
     cursor: pointer;
 }
+
+.register-form button:hover,
+#inquiryModal button:hover {
+    background-color: var(--theme-color-dark);
+}
+
+/* Optional light accent for card highlights */
+.learn-card,
+.upcoming-card {
+    border-left: 4px solid var(--theme-color-light);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+/* PDF download button */
+.pdf-btn {
+    background-color: var(--theme-color); /* full blue */
+    color: #fff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.pdf-btn:hover {
+    background-color: var(--theme-color-dark); /* darker blue on hover */
+    color: #fff;
+}
+
+
+
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -213,134 +349,51 @@ a.btn-primary, a.btn-outline, .training-buttons a, .action-buttons a {
                 </div>
             </div>
         </div>
-        <!-- WHAT YOU WILL LEARN SECTION (WHITE CARD) -->
-        <div class="learn-card">
-            <h2 class="learn-heading">What you will learn ?</h2>
-            <ul class="learn-list">
-                <li>
-                    <strong>Modern Architecture</strong> – Learn microservices principles, scalability drivers, and enterprise design trade-offs.
-                </li>
-                <li>
-                    <strong>Cloud-Native Delivery</strong> – Understand gateways, async communication, and deployment-ready patterns.
-                </li>
-            </ul>
-        </div>
+        <!-- Show topics -->
+<div class="learn-card">
+    <h2 class="learn-heading">What you will learn?</h2>
+    <ul class="learn-list">
+        @forelse($topics as $topic)
+            <li>
+                <strong>{{ $topic['title'] ?? 'Untitled' }}</strong> – 
+                {!! nl2br(e($topic['description'] ?? '')) !!}
+            </li>
+        @empty
+            <li>Introduction and basic overview of the course topics.</li>
+        @endforelse
+    </ul>
+</div>
+
         <!-- UPCOMING TRAININGS SECTION (WHITE CARD) -->
         <div class="upcoming-card" id="upcoming">
             <h2 class="upcoming-heading">Upcoming Trainings</h2>
 
-            <!-- Training Item 1 -->
-            <div class="training-item">
-                <div class="training-date">
-                    <div class="date-day">02</div>
-                    <div class="date-month-year">Mar 2026</div>
-                </div>
-                <div class="training-details">
-                    <div class="training-title">Java Microservices</div>
-                    <div class="training-meta">
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2 20h20"/>
-                            </svg>
-                            Virtual
-                        </span>
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/>
-                            </svg>
-                            20 Hours
-                        </span>
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v18M5 3l14 0-4 6 4 6H5"/>
-                            </svg>
-                            Advanced
-                        </span>
-                        <div class="training-buttons">
-                            <a href="#" class="btn-outline">Inquiry</a>
-                            <a href="#" class="btn-primary register-btn">Register Now</a>
-
-                        </div>
-                    </div>
+            @forelse($upcomingTrainings as $launch)
+    @php
+        $date = \Carbon\Carbon::parse($launch['launch_date']);
+    @endphp
+    <div class="training-item">
+        <div class="training-date">
+            <div class="date-day">{{ $date->format('d') }}</div>
+            <div class="date-month-year">{{ $date->format('M Y') }}</div>
+        </div>
+        <div class="training-details">
+            <div class="training-title">{{ $launch['course_name'] }}</div>
+            <div class="training-meta">
+                <span class="meta-tag">Virtual</span>
+                <span class="meta-tag">Duration: {{ $course['duration'] ?? '6 Weeks' }}</span>
+                <span class="meta-tag">Level: {{ $launch['level'] ?? 'Beginner' }}</span>
+                <div class="training-buttons">
+                    <a href="#" class="btn-outline">Inquiry</a>
+                    <a href="#" class="btn-primary register-btn">Register Now</a>
                 </div>
             </div>
+        </div>
+    </div>
+@empty
+    <p>No upcoming trainings scheduled.</p>
+@endforelse
 
-            <!-- Training Item 2 -->
-            <div class="training-item">
-                <div class="training-date">
-                    <div class="date-day">30</div>
-                    <div class="date-month-year">Mar 2026</div>
-                </div>
-                <div class="training-details">
-                    <div class="training-title">Java Microservices</div>
-                    <div class="training-meta">
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2 20h20"/>
-                            </svg>
-                            Virtual
-                        </span>
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/>
-                            </svg>
-                            20 Hours
-                        </span>
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v18M5 3l14 0-4 6 4 6H5"/>
-                            </svg>
-                            Advanced
-                        </span>
-                        <div class="training-buttons">
-                            <a href="#" class="btn-outline">Inquiry</a>
-                            <a href="#" class="btn-primary">Register Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Training Item 3 -->
-            <div class="training-item">
-                <div class="training-date">
-                    <div class="date-day">27</div>
-                    <div class="date-month-year">Apr 2026</div>
-                </div>
-                <div class="training-details">
-                    <div class="training-title">Java Microservices</div>
-                    <div class="training-meta">
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2 20h20"/>
-                            </svg>
-                            Virtual
-                        </span>
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/>
-                            </svg>
-                            20 Hours
-                        </span>
-                        <span class="meta-tag">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v18M5 3l14 0-4 6 4 6H5"/>
-                            </svg>
-                            Advanced
-                        </span>
-                        <div class="training-buttons">
-                            <a href="#" class="btn-outline">Inquiry</a>
-                           <a href="#" class="btn-primary register-btn">Register Now</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- TOP ACTION BAR: Download PDF, Print, Back to Courses -->
         <div class="top-action-bar">
@@ -348,7 +401,7 @@ a.btn-primary, a.btn-outline, .training-buttons a, .action-buttons a {
                 <a href="#" class="action-link" id="downloadPdf">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2" />
-                        <rect x="3" y="4" width="18" height="12" rx="2" ry="2" stroke="currentColor" />
+                        <rect x="3" y="4" width="18" height="12" rx="2" ry="2" stroke="currentColor or blue" />
                     </svg>
                     <button onclick="downloadPDF()" class="pdf-btn">Download PDF</button>
                 </a>
@@ -360,7 +413,8 @@ a.btn-primary, a.btn-outline, .training-buttons a, .action-buttons a {
                 </a>
             </div>
             <div class="action-right">
-                <a href="{{ route('frontend.course.details', $course->_id) }}" class="back-link">
+               <a href="{{ route('frontend.courses') }}" class="back-link">
+
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>

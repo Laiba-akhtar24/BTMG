@@ -39,12 +39,15 @@
                             <td>{{ $enrollment['phone'] ?? '-' }}</td>
                             <td>{{ $enrollment['status'] ?? '-' }}</td>
                             <td>
-                                @if(isset($enrollment['created_at']))
-                                    {{ \Carbon\Carbon::createFromTimestamp($enrollment['created_at']->toDateTime()->getTimestamp())->format('d M Y, h:i A') }}
-                                @else
-                                    -
-                                @endif
-                            </td>
+@if(isset($enrollment['created_at']))
+    {{ \Carbon\Carbon::createFromTimestamp(
+        $enrollment['created_at']->toDateTime()->getTimestamp()
+    )->format('d M Y') }}
+@else
+    -
+@endif
+</td>
+
                             <td>
                                 <!-- View Details Modal Trigger -->
                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#detailsModal{{ $enrollment['_id'] }}">
@@ -100,7 +103,8 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label"><strong>Level</strong></label>
-                            <input type="text" class="form-control" value="{{ $enrollment['course_level'] ?? '-' }} "
+                            <input type="text" class="form-control" value="{{ $enrollment['course_level'] ?? '-' }}
+"
  readonly>
                         </div>
                         <div class="col-md-6">
@@ -127,23 +131,52 @@
 
                     <hr>
 
-                    <!-- Reply Message -->
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <label class="form-label"><strong>Reply Message</strong></label>
-                            <textarea class="form-control" rows="4" placeholder="Type your reply here..."></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                   <form action="{{ route('admin.course-enrollments.sendReply', (string) $enrollment['_id']) }}" method="POST" class="w-100">
+    @csrf
 
-            <div class="modal-footer">
-                <!-- Left Button -->
-                <button type="button" class="btn btn-primary me-auto">Send Reply</button>
+    <!-- Reply Form -->
+<form action="{{ route('admin.course-enrollments.sendReply', (string) $enrollment['_id']) }}" method="POST">
+    @csrf
 
-                <!-- Right Buttons -->
-                <button type="button" class="btn btn-success">Approve</button>
-                <button type="button" class="btn btn-danger">Reject</button>
+    <div class="mb-3">
+        <label class="form-label"><strong>Reply Message</strong></label>
+        <textarea name="reply_message" class="form-control" rows="4" required></textarea>
+    </div>
+
+    <div class="text-start">
+        <button type="submit" class="btn btn-primary">
+            Send Reply
+        </button>
+    </div>
+</form>
+
+<hr>
+
+<!-- Approve & Reject Buttons -->
+<div class="d-flex justify-content-end gap-2">
+
+    <!-- Approve Form -->
+    <form action="{{ route('admin.course-enrollments.updateStatus', (string) $enrollment['_id']) }}" method="POST">
+        @csrf
+        <input type="hidden" name="status" value="approved">
+        <button type="submit" class="btn btn-success">
+            Approve
+        </button>
+    </form>
+
+    <!-- Reject Form -->
+    <form action="{{ route('admin.course-enrollments.updateStatus', (string) $enrollment['_id']) }}" method="POST">
+        @csrf
+        <input type="hidden" name="status" value="rejected">
+        <button type="submit" class="btn btn-danger">
+            Reject
+        </button>
+    </form>
+
+</div>
+
+
+
             </div>
         </div>
     </div>

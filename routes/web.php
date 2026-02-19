@@ -197,3 +197,9 @@ Route::post('/admin/course-enrollments/mark-viewed/{id}', [CourseEnrollmentContr
 Route::post('/admin/course-enrollments/approve/{id}', [CourseEnrollmentController::class, 'approve'])->name('admin.course-enrollments.approve');
 Route::post('/admin/course-enrollments/reject/{id}', [CourseEnrollmentController::class, 'reject'])->name('admin.course-enrollments.reject');
 Route::post('/admin/course-enrollments/reply/{id}', [CourseEnrollmentController::class, 'reply'])->name('admin.course-enrollments.reply');
+Route::post('/admin/course-enrollments/{id}/status',
+    [App\Http\Controllers\Admin\CourseEnrollmentController::class, 'updateStatus']
+)->name('admin.course-enrollments.updateStatus');
+Route::post('/admin/course-enrollments/{id}/reply',
+    [App\Http\Controllers\Admin\CourseEnrollmentController::class, 'sendReply']
+)->name('admin.course-enrollments.sendReply');

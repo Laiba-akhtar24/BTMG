@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use MongoDB\Client;
 use MongoDB\BSON\UTCDateTime;
 use MongoDB\BSON\ObjectId;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EnrollmentReplyMail;
+
+
+
+
 
 class CourseEnrollmentController extends Controller
 {
@@ -97,5 +103,51 @@ $data = [
         return redirect()->back()->with('success', 'Enrollment deleted successfully!');
     }
 
-   
+   public function updateStatus(Request $request, $id)
+{
+    try {
+        $this->db->course_enrollments->updateOne(
+            ['_id' => new ObjectId($id)],
+            ['$set' => ['status' => $request->status]]
+        );
+
+        return redirect()->back()->with('success', 'Status updated successfully!');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', $e->getMessage());
+    }
+}
+public function sendReply(Request $request, $id)
+{
+    $request->validate([
+        'reply_message' => 'required'
+    ]);
+
+    try {
+
+        // Fetch enrollment from MongoDB
+        $enrollment = $this->db->course_enrollments->findOne([
+            '_id' => new ObjectId($id)
+        ]);
+
+        if (!$enrollment) {
+            return back()->with('error', 'Enrollment not found.');
+        }
+
+        // Send Mail
+        Mail::to($enrollment['email'])->send(
+            new EnrollmentReplyMail(
+                $request->reply_message,
+                $enrollment['name'],
+                $enrollment['course_name']
+            )
+        );
+
+        return back()->with('success', 'Reply sent successfully!');
+
+    } catch (\Exception $e) {
+
+        return back()->with('error', $e->getMessage());
+    }
+}
+
 }

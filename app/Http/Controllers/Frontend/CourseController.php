@@ -22,6 +22,7 @@ class CourseController extends Controller
         $this->coursesCollection = $db->courses;
         $this->categoriesCollection = $db->categories;
         $this->launchDatesCollection = $db->launch_dates;
+         $this->topicsCollection = $db->topics;
     }
 
     // Frontend courses list – only active courses with future launch dates
@@ -63,29 +64,48 @@ class CourseController extends Controller
     }
 
     // Single course details – only accessible if active and future launch date
-    public function show($id)
-    {
-        // Ensure the course exists and is active
-        $course = $this->coursesCollection->findOne([
-            '_id' => new ObjectId($id),
-            'status' => 'Active'
-        ]);
+  public function show($id)
+{
+    $today = date('Y-m-d');
 
-        if (!$course) {
-            abort(404);
-        }
+    // 1️⃣ Fetch the course
+    $course = $this->coursesCollection->findOne([
+        '_id' => new ObjectId($id),
+        'status' => 'Active'
+    ]);
 
-        // Verify that this course has a launch date >= today
-        $today = date('Y-m-d');
-        $launch = $this->launchDatesCollection->findOne([
-            'course_id' => new ObjectId($id),
-            'launch_date' => ['$gte' => $today]
-        ]);
-
-        if (!$launch) {
-            abort(404);
-        }
-
-        return view('course-details', compact('course'));
+    if (!$course) {
+        abort(404);
     }
+    $course = (array) $course;
+
+    // 2️⃣ Ensure at least one future launch exists
+    $launch = $this->launchDatesCollection->findOne([
+        'course_id' => new ObjectId($course['_id']),
+        'launch_date' => ['$gte' => $today]
+    ]);
+
+    if (!$launch) {
+        abort(404);
+    }
+
+    // 3️⃣ Fetch topics
+    $topicsCursor = $this->topicsCollection->find([
+        'course_id' => new ObjectId($course['_id'])
+    ]);
+    $topics = iterator_to_array($topicsCursor) ?: [];
+
+    // 4️⃣ Fetch upcoming trainings for **this course only**
+    $upcomingCursor = $this->launchDatesCollection->find([
+        'course_id' => new ObjectId($course['_id']),
+        'launch_date' => ['$gte' => $today]
+    ], [
+        'sort' => ['launch_date' => 1]
+    ]);
+    $upcomingTrainings = iterator_to_array($upcomingCursor) ?: [];
+
+    // 5️⃣ Always pass $upcomingTrainings to the view (even if empty)
+    return view('course-details', compact('course', 'topics', 'upcomingTrainings'));
+}
+
 }
