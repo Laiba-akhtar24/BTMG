@@ -18,6 +18,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    
 }
 
 .sidebar-title {
@@ -142,6 +143,7 @@
     color: #fff;
     border: none;
     cursor: pointer;
+    
 }
 
 .actions .btn-edit {
@@ -242,7 +244,7 @@
 
 /* Action Buttons - very light colors */
 .btn-edit {
-    background-color: #fef3c7;
+    background-color: #10b981;
     color: #92400e;
     font-size: 0.75rem;
     padding: 0.25rem 0.5rem;
@@ -307,7 +309,7 @@
 }
 
 .btn-edit {
-    background-color: #fef3c7;
+    background-color: #10b981;
     color: #92400e;
     font-size: 0.75rem;
     padding: 0.25rem 0.5rem;
@@ -323,4 +325,791 @@
 /* Table rows */
 .courses-table tbody tr:hover {
     background-color: #e0f2fe; /* light hover */
+}
+
+
+
+/* ================= ADD COURSE PAGE ================= */
+
+.add-course-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.add-course-container {
+    width: 100%;
+    max-width: 36rem;
+    background: white;
+    padding: 1.5rem;
+}
+
+.add-course-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+}
+
+.form-row {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.form-half {
+    width: 50%;
+}
+
+.price-note {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+    margin-bottom: 0;
+}
+
+.skill-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.add-skill-btn {
+    background: #2563eb;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border: none;
+    cursor: pointer;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0 1rem 0;
+}
+
+.status-checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.button-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.save-btn {
+    background: #2563eb;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #6b7280;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.edit-course-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.edit-course-card {
+    width: 100%;
+    max-width: 36rem;
+    background: #10b981;
+    padding: 1.5rem;
+}
+
+.edit-course-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 1.5rem;
+}
+
+.success-alert {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.form-control {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+}
+
+textarea.form-control {
+    border-top: none;
+}
+
+.flex-row {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.flex-half {
+    width: 50%;
+}
+
+.small-text {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+    margin-bottom: 0;
+}
+
+.skill-input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.add-btn {
+    background: #2563eb;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border: none;
+    cursor: pointer;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+}
+
+.skill-remove {
+    background: none;
+    border: none;
+    color: #1e40af;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 0.25rem;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0 1rem 0;
+}
+
+.checkbox-wrapper input {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.primary-btn {
+    background: #2563eb;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    background: #6b7280;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+
+/* Page Wrapper */
+.container-fluid.py-4 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+/* Table Card */
+.card.shadow-sm.border-0 {
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+    border: 0;
+}
+
+/* Table */
+.table-hover {
+    cursor: default;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0,0,0,.05);
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.table td.text-start {
+    text-align: left;
+}
+
+/* Badges */
+.badge {
+    padding: 0.35em 0.65em;
+    font-size: 0.75rem;
+}
+
+/* Buttons in Actions Column */
+.d-flex.flex-column.align-items-start.gap-1 .btn {
+    margin-bottom: 2px;
+    display: inline-block;
+}
+
+/* Container padding */
+.container-fluid {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Card styling */
+.card.shadow-sm.border-0 {
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+    border: 0;
+}
+
+/* Table hover effect */
+.table-hover tbody tr:hover {
+    background-color: rgba(0,0,0,.05);
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+/* Flex wrapper for action column */
+.d-flex.align-items-center.justify-content-center.gap-2.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+/* Badges */
+.badge {
+    padding: 0.35em 0.65em;
+    font-size: 0.75rem;
+}
+
+/* Buttons in action column */
+.btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+/* Container padding */
+.container.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Card styling */
+.card.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+}
+
+/* Form Card */
+.topic-form-card {
+    margin-bottom: 1.5rem;
+}
+
+/* Table Card */
+.topics-table-card {
+    margin-top: 1rem;
+}
+
+/* Table hover effect */
+.table-hover tbody tr:hover {
+    background-color: rgba(0,0,0,.05);
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.table td.text-start {
+    text-align: left;
+}
+
+/* Badges */
+.badge {
+    padding: 0.35em 0.65em;
+    font-size: 0.75rem;
+}
+
+/* Buttons */
+.btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 2px;
+}
+
+/* Flex for actions column */
+.d-flex.flex-column.align-items-start.gap-1 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+/* Container padding */
+.container-fluid {
+    padding: 1rem 1.5rem;
+}
+
+/* Table styling */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 0.5rem;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Modal Header */
+.modal-header.bg-primary {
+    background-color: #0d6efd !important;
+    color: #fff;
+}
+
+/* Modal Title small text */
+.modal-title small {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.75);
+}
+
+/* Form inside modal */
+.modal-body .form-label {
+    font-weight: 600;
+}
+
+.modal-body textarea.form-control,
+.modal-body input.form-control {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+/* Container padding */
+.container {
+    padding: 1rem 1.5rem;
+}
+
+/* Table styling */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 0.5rem;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Modal styling */
+.modal-header h5 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.modal-header small {
+    display: block;
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+textarea.form-control, input.form-control {
+    width: 100%;
+}
+
+/* Action Buttons */
+.btn-success, .btn-danger, .btn-primary {
+    min-width: 80px;
+}
+
+
+/* Container styling */
+.flex {
+    display: flex;
+}
+.justify-center {
+    justify-content: center;
+}
+.mt-10 {
+    margin-top: 2.5rem;
+}
+.container {
+    width: 100%;
+    max-width: 36rem;
+    background: #fff;
+    padding: 1.5rem;
+}
+
+/* Headings */
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Fields */
+input[type="text"], input[type="number"], input[type="file"], textarea, select {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+}
+
+textarea {
+    border-top: none;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+/* Duration Flex */
+.duration-wrapper {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+}
+button#addSkillBtn {
+    background: #2563eb;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border: none;
+}
+
+/* Skill Tags */
+#skillsContainer span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+}
+#skillsContainer span button {
+    background: none;
+    border: none;
+    color: #1e40af;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 0.25rem;
+}
+
+/* Active Checkbox */
+input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Form Buttons */
+form div a, form div button {
+    padding: 0.5rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    border: none;
+}
+form div button[type="submit"] {
+    background: #2563eb;
+}
+form div a {
+    background: #6b7280;
+}
+/* Page Container */
+.container-fluid {
+    padding: 1.5rem;
+}
+
+/* Page Header */
+.d-flex.justify-content-between.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+/* Modal Custom Styles */
+.modal-content.bg-dark {
+    background-color: #1f2937 !important;
+    color: white;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+/* Modal Header */
+.modal-header {
+    border-bottom: 0;
+    flex-direction: column;
+    align-items: start;
+    position: relative;
+}
+.modal-header h5 {
+    margin-bottom: 0;
+}
+.modal-header small {
+    color: #9ca3af;
+}
+
+/* Close Button */
+.btn-close-white {
+    filter: invert(1);
+}
+
+/* Table */
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+.table th, .table td {
+    vertical-align: middle;
+}
+.badge {
+    padding: 0.25em 0.5em;
+    font-size: 0.75rem;
+}
+.bg-success {
+    background-color: #198754 !important;
+}
+.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+/* Textarea */
+textarea.form-control {
+    resize: vertical;
+}
+
+/* Select All container */
+thead div.d-flex {
+    align-items: center;
+}
+/* Modal Overlay */
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* Modal Box */
+.modal-content-box {
+    background: #fff;
+    width: 650px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Modal Grid */
+.modal-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.grid-row {
+    display: flex;
+    gap: 10px;
+}
+
+.grid-row-full {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-field input,
+.grid-row-full textarea {
+    padding: 6px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 14px;
+    background: #f8f9fa;
+}
+
+#replyMessage {
+    background: #fff;
+    border: 1px solid #aaa;
+}
+
+.btn-success {
+    padding: 6px 18px;
+    background: green;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Page full background */
+#course-inquiries-page .table-responsive {
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Table full width aur background */
+#course-inquiries-page .table-responsive {
+    background-color: #fff; /* white table container */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Table itself */
+#course-inquiries-page table {
+    width: 100%;
+    background-color: #fff;
 }

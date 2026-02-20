@@ -1,6 +1,9 @@
 @extends('admin.layout')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ asset('css/contact-submissions.css') }}">
+
 <div class="container-fluid">
     <h2 class="mb-4">Contact Submissions</h2>
 
@@ -22,65 +25,64 @@
                 <td>{{ $lead['name'] ?? '' }}</td>
                 <td>{{ $lead['email'] ?? '' }}</td>
                 <td>
-    {{ isset($lead['_id']) ? date('d M Y', $lead['_id']->getTimestamp()) : '' }}
-</td>
-
+                    {{ isset($lead['_id']) ? date('d M Y', $lead['_id']->getTimestamp()) : '' }}
+                </td>
                 <td>{{ $lead['replied'] ?? 'Pending' }}</td>
                 <td>{{ $lead['viewed'] ?? 'Not Viewed' }}</td>
-                <!-- Trigger Button in your table -->
-<td>
-    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal{{ $lead['_id'] }}">
-        View Details
-    </button>
-</td>
+                <!-- Trigger Button -->
+                <td>
+                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal{{ $lead['_id'] }}">
+                        View Details
+                    </button>
+                </td>
 
-<!-- Modal -->
-<div class="modal fade" id="contactModal{{ $lead['_id'] }}" tabindex="-1" aria-labelledby="contactModalLabel{{ $lead['_id'] }}" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      
-      <!-- Modal Header -->
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="contactModalLabel{{ $lead['_id'] }}">
-            <i class="fas fa-envelope me-2"></i> Contact Details
-            <small class="d-block text-white-50" style="font-size: 12px;">View & Reply</small>
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <!-- Modal Body -->
-      <div class="modal-body">
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label class="form-label fw-bold">Name</label>
-            <input type="text" class="form-control" value="{{ $lead['name'] ?? '' }}" readonly>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label fw-bold">Email</label>
-            <input type="email" class="form-control" value="{{ $lead['email'] ?? '' }}" readonly>
-          </div>
-        </div>
+                <!-- Modal -->
+                <div class="modal fade" id="contactModal{{ $lead['_id'] }}" tabindex="-1" aria-labelledby="contactModalLabel{{ $lead['_id'] }}" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
 
-        <div class="mb-3">
-          <label class="form-label fw-bold">Message</label>
-          <textarea class="form-control" rows="4" readonly>{{ $lead['message'] ?? '' }}</textarea>
-        </div>
+                      <!-- Modal Header -->
+                      <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title" id="contactModalLabel{{ $lead['_id'] }}">
+                            <i class="fas fa-envelope me-2"></i> Contact Details
+                            <small class="d-block text-white-50" style="font-size: 12px;">View & Reply</small>
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
 
-        <hr>
+                      <!-- Modal Body -->
+                      <div class="modal-body">
+                        <div class="row mb-3">
+                          <div class="col-md-6">
+                            <label class="form-label fw-bold">Name</label>
+                            <input type="text" class="form-control" value="{{ $lead['name'] ?? '' }}" readonly>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label fw-bold">Email</label>
+                            <input type="email" class="form-control" value="{{ $lead['email'] ?? '' }}" readonly>
+                          </div>
+                        </div>
 
-        <form method="POST" action="{{ route('admin.contact.reply', $lead['_id']) }}">
-          @csrf
-          <div class="mb-3">
-            <label class="form-label fw-bold">Reply Message</label>
-            <textarea class="form-control" name="reply_message" rows="4" placeholder="Write your reply..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-warning">Send Reply</button>
-        </form>
-      </div>
-      
-    </div>
-  </div>
-</div>
+                        <div class="mb-3">
+                          <label class="form-label fw-bold">Message</label>
+                          <textarea class="form-control" rows="4" readonly>{{ $lead['message'] ?? '' }}</textarea>
+                        </div>
+
+                        <hr>
+
+                        <form method="POST" action="{{ route('admin.contact.reply', $lead['_id']) }}">
+                          @csrf
+                          <div class="mb-3">
+                            <label class="form-label fw-bold">Reply Message</label>
+                            <textarea class="form-control" name="reply_message" rows="4" placeholder="Write your reply..." required></textarea>
+                          </div>
+                          <button type="submit" class="btn btn-warning">Send Reply</button>
+                        </form>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
 
             </tr>
             @endforeach
@@ -90,16 +92,16 @@
         <p class="text-muted">No contact submissions yet.</p>
     @endif
 </div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Select all view buttons
+    // Mark as viewed when modal opens
     const viewButtons = document.querySelectorAll('button[data-bs-toggle="modal"]');
 
     viewButtons.forEach(button => {
         const leadId = button.getAttribute('data-bs-target').replace('#contactModal', '');
         const modal = document.querySelector('#contactModal' + leadId);
 
-        // Listen to modal show event (Bootstrap)
         modal.addEventListener('shown.bs.modal', function () {
             fetch("{{ url('admin/contact/viewed') }}/" + leadId, {
                 method: 'POST',
@@ -111,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Update the “Viewed” cell in the table
                     const row = button.closest('tr');
                     row.querySelector('td:nth-child(5)').textContent = 'Viewed';
                 }
@@ -120,6 +121,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-
 
 @endsection

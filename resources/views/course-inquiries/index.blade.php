@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-<div class="container">
+<div class="container-fluid" id="course-inquiries-page">
     <h1 class="my-4">Course Inquiries</h1>
 
     @if(count($inquiries) === 0)

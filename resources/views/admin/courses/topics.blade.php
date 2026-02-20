@@ -1,6 +1,9 @@
 @extends('admin.layout')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ asset('css/manage-topics.css') }}">
+
 <div class="container py-4">
 
     <!-- Page Header -->
@@ -76,15 +79,15 @@
                         </thead>
                         <tbody>
                             @foreach($topics as $topic)
-                                <tr>
+                                <tr data-topic-id="{{ $topic['_id'] }}">
                                     <td>{{ $topic['title'] ?? '-' }}</td>
                                     <td>{{ $topic['description'] ?? '-' }}</td>
                                     <td>{{ $topic['sort'] ?? '-' }}</td>
                                     <td>
                                         @if(($topic['status'] ?? '') == 'Active')
-                                            <span class="badge bg-success">Active</span>
+                                            <span class="badge bg-success status-badge">Active</span>
                                         @else
-                                            <span class="badge bg-secondary">Inactive</span>
+                                            <span class="badge bg-secondary status-badge">Inactive</span>
                                         @endif
                                     </td>
                                     <td>
@@ -122,9 +125,24 @@
     </div>
 
 </div>
-@endsection
 
-@push('styles')
-<!-- Admin CSS -->
-<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-@endpush
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Example JS: status badge toggle (click to simulate change)
+    document.querySelectorAll('.status-badge').forEach(function(badge){
+        badge.addEventListener('click', function() {
+            if(badge.textContent.trim() === 'Active'){
+                badge.textContent = 'Inactive';
+                badge.classList.remove('bg-success');
+                badge.classList.add('bg-secondary');
+            } else {
+                badge.textContent = 'Active';
+                badge.classList.remove('bg-secondary');
+                badge.classList.add('bg-success');
+            }
+        });
+    });
+});
+</script>
+
+@endsection

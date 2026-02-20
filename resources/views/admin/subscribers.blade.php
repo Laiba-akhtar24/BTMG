@@ -2,6 +2,8 @@
 
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('css/subscribers.css') }}">
+
 <div class="container-fluid">
 
     <!-- PAGE HEADER -->
@@ -18,13 +20,11 @@
             <div class="modal-content bg-dark text-white rounded-3 p-3">
 
                 <!-- MODAL HEADER -->
-                <div class="modal-header border-0 flex-column align-items-start position-relative">
+                <div class="modal-header">
                     <div class="d-flex align-items-center mb-1 w-100">
-                        <!-- Envelope Icon -->
                         <span style="font-size: 1.3rem; margin-right: 0.5rem;">✉️</span>
                         <h5 class="modal-title mb-0" id="sendMessageModalLabel">Send Message</h5>
                     </div>
-                    <!-- Subtitle -->
                     <small class="text-secondary">Send to selected subscribers</small>
                     <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 mt-3 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -37,7 +37,6 @@
                         <div class="mb-3">
                             <textarea id="messageTextarea" name="message" class="form-control" rows="8" placeholder="Write your message here..." required></textarea>
                         </div>
-
                         <div class="text-end">
                             <button type="submit" class="btn btn-warning">Send Message</button>
                         </div>
@@ -59,7 +58,6 @@
                         <th>Select</th>
                         <th>
                             <div class="d-flex align-items-center">
-                                <!-- Select All Checkbox -->
                                 <input type="checkbox" id="selectAllCheckbox" class="me-2">
                                 Select All
                             </div>
@@ -78,7 +76,6 @@
                                     <span class="badge bg-secondary">Inactive</span>
                                 @endif
                             </td>
-                            <!-- Select Checkbox -->
                             <td>
                                 <input type="checkbox" class="subscriber-checkbox" value="{{ $subscriber['email'] ?? '' }}">
                             </td>
@@ -87,9 +84,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="4" class="text-center text-muted">
-                                No subscribers found.
-                            </td>
+                            <td colspan="4" class="text-center text-muted">No subscribers found.</td>
                         </tr>
                     @endif
                 </tbody>
@@ -101,30 +96,36 @@
 
 <!-- JAVASCRIPT -->
 <script>
-// Handle form submission for sending messages
-document.querySelector('#sendMessageModal form').addEventListener('submit', function(e) {
-    const selectedCheckboxes = document.querySelectorAll('.subscriber-checkbox:checked');
-    if(selectedCheckboxes.length === 0) {
-        e.preventDefault();
-        alert('Please select at least one subscriber.');
-        return;
-    }
+document.addEventListener('DOMContentLoaded', function() {
 
-    document.querySelectorAll('input[name="selected_emails[]"]').forEach(el => el.remove());
+    // Handle form submission for sending messages
+    const sendForm = document.querySelector('#sendMessageModal form');
+    sendForm.addEventListener('submit', function(e) {
+        const selectedCheckboxes = document.querySelectorAll('.subscriber-checkbox:checked');
+        if(selectedCheckboxes.length === 0) {
+            e.preventDefault();
+            alert('Please select at least one subscriber.');
+            return;
+        }
 
-    selectedCheckboxes.forEach(cb => {
-        const hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = 'selected_emails[]';
-        hiddenInput.value = cb.value;
-        e.target.appendChild(hiddenInput);
+        // Remove any existing hidden inputs
+        document.querySelectorAll('input[name="selected_emails[]"]').forEach(el => el.remove());
+
+        selectedCheckboxes.forEach(cb => {
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'selected_emails[]';
+            hiddenInput.value = cb.value;
+            sendForm.appendChild(hiddenInput);
+        });
     });
-});
 
-// Select All checkbox functionality
-document.getElementById('selectAllCheckbox').addEventListener('change', function() {
-    const allCheckboxes = document.querySelectorAll('.subscriber-checkbox');
-    allCheckboxes.forEach(cb => cb.checked = this.checked);
+    // Select All checkbox functionality
+    document.getElementById('selectAllCheckbox').addEventListener('change', function() {
+        const allCheckboxes = document.querySelectorAll('.subscriber-checkbox');
+        allCheckboxes.forEach(cb => cb.checked = this.checked);
+    });
+
 });
 </script>
 

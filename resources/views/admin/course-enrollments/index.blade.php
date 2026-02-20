@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-<div class="container">
+<div class="container-fluid" id="course-inquiries-page">
     <h1 class="mb-4">Course Enrollments</h1>
 
     @if(session('success'))

@@ -1,6 +1,9 @@
 @extends('admin.layout')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ asset('css/launch-dates.css') }}">
+
 <div class="container-fluid">
 
     <!-- Page Header -->
@@ -28,7 +31,7 @@
                     </thead>
                     <tbody>
                         @foreach($courses as $course)
-                        <tr>
+                        <tr data-course-id="{{ $course['_id'] }}">
                             <td>{{ $course['name'] ?? '-' }}</td>
                             <td>{{ $course['level'] ?? '-' }}</td>
                             <td>
@@ -37,39 +40,38 @@
 
                             <!-- ✅ Action Column -->
                             <td>
-    <div class="d-flex align-items-center justify-content-center gap-2 flex-nowrap">
+                                <div class="d-flex align-items-center justify-content-center gap-2 flex-nowrap">
 
-        <!-- Enrollments -->
-        <span class="badge bg-secondary">
-            Enroll: {{ $course['enrollments'] ?? 0 }}
-        </span>
+                                    <!-- Enrollments -->
+                                    <span class="badge bg-secondary">
+                                        Enroll: {{ $course['enrollments'] ?? 0 }}
+                                    </span>
 
-        <!-- Inquiries -->
-        <span class="badge bg-info text-dark">
-            Inq: {{ $course['inquiries'] ?? 0 }}
-        </span>
+                                    <!-- Inquiries -->
+                                    <span class="badge bg-info text-dark">
+                                        Inq: {{ $course['inquiries'] ?? 0 }}
+                                    </span>
 
-        <!-- Edit Button -->
-        <a href="{{ route('admin.launch-dates.edit', $course['_id']) }}" 
-           class="btn btn-sm btn-warning">
-            Edit
-        </a>
+                                    <!-- Edit Button -->
+                                    <a href="{{ route('admin.launch-dates.edit', $course['_id']) }}" 
+                                       class="btn btn-sm btn-warning">
+                                        Edit
+                                    </a>
 
-        <!-- Delete Button -->
-        <form action="{{ route('admin.launch-dates.destroy', $course['_id']) }}" 
-              method="POST"
-              onsubmit="return confirm('Are you sure you want to delete this record?')"
-              style="margin:0;">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-sm btn-danger">
-                Delete
-            </button>
-        </form>
+                                    <!-- Delete Button -->
+                                    <form action="{{ route('admin.launch-dates.destroy', $course['_id']) }}" 
+                                          method="POST"
+                                          onsubmit="return confirm('Are you sure you want to delete this record?')"
+                                          style="margin:0;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
 
-    </div>
-</td>
-
+                                </div>
+                            </td>
 
                         </tr>
                         @endforeach
@@ -86,4 +88,13 @@
     </div>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Just an example JS placeholder
+    // You can add future JS here without changing any routes or functionality
+    console.log("Launch Dates page loaded. JS ready.");
+});
+</script>
+
 @endsection
