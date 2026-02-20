@@ -135,7 +135,7 @@
             <div class="date-month-year">{{ $date->format('M Y') }}</div>
         </div>
         <div class="training-details">
-            <div class="training-title">{{ $launch['course_name'] }}</div>
+            <!-- <div class="training-title">{{ $launch['course_name'] }}</div> -->
             <div class="training-meta">
                 <span class="meta-tag">Virtual</span>
                 <span class="meta-tag">Duration: {{ $course['duration'] ?? '6 Weeks' }}</span>

@@ -5,7 +5,7 @@
 
     <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-primary">Manage Categories</h2>
+        <h2 >Manage Categories</h2>
         <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
             + Add New Category
         </a>

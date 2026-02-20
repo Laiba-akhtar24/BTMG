@@ -30,15 +30,15 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label">Course Category</label>
-                <select name="category" class="form-control" required>
-                    <option value="" disabled>Select Category</option>
-                    <option value="Web Development" {{ ($course->category ?? '')=='Web Development' ? 'selected' : '' }}>Web Development</option>
-                    <option value="Design" {{ ($course->category ?? '')=='Design' ? 'selected' : '' }}>Design</option>
-                    <option value="Marketing" {{ ($course->category ?? '')=='Marketing' ? 'selected' : '' }}>Marketing</option>
-                    <option value="Business" {{ ($course->category ?? '')=='Business' ? 'selected' : '' }}>Business</option>
-                    <option value="IT & Software" {{ ($course->category ?? '')=='IT & Software' ? 'selected' : '' }}>IT & Software</option>
+                 <div>
+                <label for="category">Course Category</label>
+                <select name="category" id="category" required>
+                    <option value="" disabled selected>Select Category</option>
+                    @foreach($categories as $cat)
+                        <option value="{{ $cat['name'] }}">{{ $cat['name'] }}</option>
+                    @endforeach
                 </select>
+            </div>
             </div>
 
             <div class="form-group">

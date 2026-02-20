@@ -1434,7 +1434,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1;
-    color: #a9c9dd; /* Orange accent */
+    color: black; /* Orange accent */
 }
 
 .date-month-year {
@@ -1486,9 +1486,9 @@
 .btn-outline {
     display: inline-block;
     padding: 0.5rem 1.2rem;
-    border: 1px solid #a9c9dd;
+    border: 1px solid #057dcd;
     border-radius: 4px;
-    color: #a9c9dd;
+    color: #057dcd;
     background: transparent;
     font-weight: 500;
     text-decoration: none;
@@ -1587,7 +1587,7 @@
 
 /* PDF BUTTON */
 #downloadPdf {
-    background-color: #a9c9dd;
+    background-color: #3c86ca;
     color: #fff;
     padding: 0.45rem 0.9rem;
     border-radius: 6px;
@@ -1597,6 +1597,10 @@
 #downloadPdf:hover {
     background-color: #3c86ca;
     transform: translateY(-2px);
+}
+.pdf-btn{
+    background-color: #3c86ca;
+    border: 0px;
 }
 
 /* PRINT BUTTON HOVER EFFECT ONLY */
