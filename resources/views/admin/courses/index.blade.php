@@ -42,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($courses as $course)
+                           @foreach(collect($courses)->sortBy('sort', SORT_NUMERIC) as $course)
                                 @php
                                     $image = $course['image'] ?? 'https://via.placeholder.com/80x50';
                                     $name = $course['name'] ?? '-';

@@ -161,7 +161,7 @@ label {
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($topics as $topic)
+                            @foreach(collect($topics)->sortBy('sort', SORT_NUMERIC) as $topic)
                                 <tr data-topic-id="{{ $topic['_id'] }}">
                                     <td>{{ $topic['title'] ?? '-' }}</td>
                                     <td>{!! $topic['description'] ?? '-' !!}</td>
