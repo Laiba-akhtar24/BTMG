@@ -1,4 +1,3 @@
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 @php
@@ -9,6 +8,427 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+
+/* ===============================
+GEN-Z PROFESSIONAL UI (SAFE)
+=============================== */
+/* ===============================
+GEN-Z PROFESSIONAL UI (SAFE)
+=============================== */
+
+body {
+    background: linear-gradient(180deg, #f8fafc, #eef3f9);
+}
+
+.course-detail-page {
+    max-width: 1300px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.course-detail-wrapper {
+    background: transparent;
+}
+
+/* header */
+.course-header {
+    margin-bottom: 30px;
+}
+
+/* Update Badge Style */
+.badge {
+    background: #EBF4F6;  /* Light soft blue background to match the theme */
+    color: #09637E;  /* Deep teal text */
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.course-title {
+    font-size: 50px;
+    font-weight: 800;
+    margin-top: 12px;
+    color: #0f172a;
+}
+
+/* grid */
+.course-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 900px) {
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* cards */
+.course-left,
+.snapshot-card,
+.learn-card,
+.upcoming-card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transition: .25s;
+}
+
+.course-left:hover,
+.snapshot-card:hover,
+.learn-card:hover,
+.upcoming-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.10);
+}
+
+/* snapshot */
+.snapshot-card {
+    background: #f8fafc; /* Soft light background for the snapshot */
+}
+
+.snapshot-price {
+    font-size: 36px;
+    font-weight: 800;
+    color: #09637E; /* Deep teal for price */
+    margin-bottom: 10px;
+}
+
+.snapshot-detail {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    color: #1f2933; /* Dark charcoal for text */
+}
+
+/* buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #09637E, #088395); /* Deep teal to aqua blue */
+    color: white !important;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: none;
+    transition: .25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+}
+
+.btn-outline {
+    border: 2px solid #088395; /* Aqua blue outline */
+    color: #088395;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    background: white;
+    transition: .25s;
+}
+
+.btn-outline:hover {
+    background: #088395; /* Aqua blue background on hover */
+    color: white;
+}
+
+/* action bar */
+.top-action-bar {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.action-link {
+    background: white;
+    padding: 10px 18px;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.action-link:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .1);
+}
+
+/* modal button color adjustments */
+.submit-registration {
+    background: linear-gradient(135deg, #09637E, #088395); /* Same deep teal to aqua blue */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.submit-registration:hover {
+    opacity: .9;
+}
+
+/* icon styles */
+/* Update icon colors to Deep Teal */
+.meta-item svg {
+    stroke: #09637E;  /* Deep teal for icons */
+}
+.snapshot-detail svg{
+    stroke: #09637E; 
+}
+/* ===============================
+What You Will Learn Section Styling
+=============================== */
+
+.learn-card {
+    background: #EBF4F6; /* Soft light blue background */
+    padding: 30px;  /* Padding for better spacing */
+    border-radius: 18px;  /* Rounded corners */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05); /* Soft shadow for prominence */
+    transition: box-shadow .3s ease, transform .3s ease;
+}
+
+.learn-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+.learn-heading {
+    font-size: 35px;  /* Larger font size for the heading */
+    font-weight: 800;  /* Strong weight for emphasis */
+    color: #09637E;  /* Deep teal for the heading */
+    margin-bottom: 20px;  /* Space below the heading */
+    text-align: left;  /* Centered heading */
+    text-transform: uppercase;  /* Uppercase for formal tone */
+    letter-spacing: 1px;  /* Slight letter spacing for elegance */
+}
+
+.learn-list {
+    font-size: 30px;  /* Font size for list items */
+    color: #1f2933;  /* Dark charcoal text color */
+    line-height: 1.8;  /* Increased line-height for better readability */
+    margin-top: 20px;
+}
+
+.learn-list li {
+    margin-bottom: 15px;  /* Space between list items */
+    padding-left: 25px;  /* Indentation for clean list look */
+    position: relative;  /* Position for icon */
+    background-color: #ffffff;  /* White background for each list item */
+    border-radius: 12px;  /* Rounded corners for the list item */
+    padding: 12px 20px;  /* Padding for better spacing */
+    transition: background-color 0.3s ease, transform 0.3s ease;  /* Smooth transition effects */
+}
+
+
+
+.learn-list li::before {
+     /* Bullet point */
+    color: #088395;  /* Aqua blue bullet for consistency */
+    font-size: 24px;  /* Larger bullet */
+    position: absolute;
+    left: 0;  /* Position bullet to the left */
+    top: 50%;
+    transform: translateY(-50%);  /* Vertically center the bullet */
+}
+
+.learn-list li strong {
+    font-weight: 700;  /* Bold the topic title */
+}
+
+.learn-list li span {
+    color: #475569;  /* Light gray color for the description text */
+}
+
+/* Action buttons (in the topic section) */
+.learn-list a {
+    color: #09637E;  /* Deep teal for links */
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 10px;  /* Space between text and the link */
+    transition: color 0.3s ease;
+}
+
+.learn-list a:hover {
+    color: #088395;  /* Aqua blue for links on hover */
+}
+
+/* ================================
+INQUIRY AND REGISTER MODAL STYLING
+=============================== */
+
+.modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding-top: 60px; /* Center modal vertically */
+    
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Close Button */
+.modal-close {
+    color: #09637E; /* Deep teal close icon */
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #088395; /* Aqua blue on hover */
+}
+
+/* Header Styling */
+h3 {
+    color: #09637E; /* Deep teal color for headings */
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #1f2933; /* Dark charcoal for the sub-heading */
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #1f2933; /* Dark charcoal */
+}
+
+/* Course meta section (icons and details) */
+.modal-content div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0 20px;
+}
+
+.modal-content span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-content svg {
+    stroke: #088395; /* Aqua blue color for icons */
+}
+
+.modal-content svg:hover {
+    stroke: #09637E; /* Deep teal on hover */
+}
+
+/* Form Styling */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+input[type="checkbox"] {
+    margin-top: 5px;
+}
+
+label {
+    color: #1f2933; /* Dark charcoal for labels */
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, #09637E, #088395); /* Gradient from deep teal to aqua blue */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #088395, #09637E); /* Reverse gradient on hover */
+}
+
+/* Consent & Disclaimer Section */
+.consent-box {
+    background: #EBF4F6; /* Soft light blue background */
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 1px solid #09637E; /* Deep teal border */
+}
+
+.consent-text {
+    color: #1f2933; /* Dark charcoal for text */
+}
+
+.consent-check input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Footer Section */
+.submit-note {
+    color: #555;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.submit-note a {
+    color: #088395; /* Aqua blue for clickable links */
+}
+
+.submit-note a:hover {
+    color: #09637E; /* Deep teal on hover */
+}
+
+/* Alert for success */
+.alert-success {
+    background-color: #d4edda; /* Light green for success */
+    color: #155724; /* Dark green text */
+    border-color: #c3e6cb; /* Light green border */
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+</style>
+
 <div class="course-detail-page" id="pdf-content">
     <div class="course-detail-wrapper">
         <!-- HEADER -->
@@ -37,45 +457,29 @@
 
                     <div class="meta-item">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                            <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
                         </svg>
                         <span>Duration: {{ $course['duration'] ?? '6 Weeks' }}</span>
                     </div>
 
                     <div class="meta-item">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2 20h20"/>
+                            <rect x="3" y="4" width="18" height="14" rx="2"/>
+                            <path d="M2 20h20"/>
                         </svg>
                         <span>Mode: {{ $course['mode'] ?? 'Online' }}</span>
                     </div>
                 </div>
 
                 <!-- ACTION BUTTONS -->
-                <div class="action-buttons">
-                    <a href="#upcoming" class="btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 2v4M8 2v4M3 10h18"/>
-                        </svg>
-                        Check Availability
-                    </a>
-                    <a class="btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                        </svg>
-                        Inquiry
-                    </a>
-                </div>
             </div>
 
-            <!-- RIGHT COLUMN (SNAPSHOT) -->
+            <!-- RIGHT COLUMN -->
             <div class="course-right">
                 <div class="snapshot-card">
-                    <h4 class="snapshot-heading">
-                        <i class="fas fa-book-open"></i> Course Snapshot
-                    </h4>
+
+                    <h4>Course Snapshot</h4>
 
                     <div class="snapshot-price">
                         ${{ $course['price'] ?? '299' }}
@@ -85,101 +489,96 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v18M5 3l14 0-4 6 4 6H5"/>
                         </svg>
-                        <span>Level: <span class="font-medium">{{ $course['level'] ?? 'Beginner' }}</span></span>
+                        Level: {{ $course['level'] ?? 'Beginner' }}
                     </div>
 
                     <div class="snapshot-detail">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                            <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
                         </svg>
-                        <span>Duration: <span class="font-medium">{{ $course['duration'] ?? '6 Weeks' }}</span></span>
+                        Duration: {{ $course['duration'] ?? '6 Weeks' }}
                     </div>
 
                     <div class="snapshot-detail">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="orange" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2 20h20"/>
+                            <rect x="3" y="4" width="18" height="14" rx="2"/>
+                            <path d="M2 20h20"/>
                         </svg>
-                        <span>Mode: <span class="font-medium">{{ $course['mode'] ?? 'Online' }}</span></span>
+                        Mode: {{ $course['mode'] ?? 'Online' }}
+                    </div>
+                    <div class="training-buttons">
+
+                        <a href="#" class="btn-outline">Inquiry</a>
+
+                        <a href="#" class="btn-primary register-btn">
+                            Register Now
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Show topics -->
-<div class="learn-card">
-    <h2 class="learn-heading">What you will learn?</h2>
-    <ul class="learn-list">
-        @forelse($topics as $topic)
-            <li>
-                <strong>{{ $topic['title'] ?? 'Untitled' }}</strong> – 
-                {!! nl2br(e($topic['description'] ?? '')) !!}
-            </li>
-        @empty
-            <li>Introduction and basic overview of the course topics.</li>
-        @endforelse
-    </ul>
-</div>
 
-        <!-- UPCOMING TRAININGS SECTION (WHITE CARD) -->
-        <div class="upcoming-card" id="upcoming">
-            <h2 class="upcoming-heading">Upcoming Trainings</h2>
+        <!-- topics -->
+        <div class="learn-card">
+            <h2 class="learn-heading">What You Will Learn?</h2>
 
-            @forelse($upcomingTrainings as $launch)
-    @php
-        $date = \Carbon\Carbon::parse($launch['launch_date']);
-    @endphp
-    <div class="training-item">
-        <div class="training-date">
-            <div class="date-day">{{ $date->format('d') }}</div>
-            <div class="date-month-year">{{ $date->format('M Y') }}</div>
-        </div>
-        <div class="training-details">
-            <!-- <div class="training-title">{{ $launch['course_name'] }}</div> -->
-            <div class="training-meta">
-                <span class="meta-tag">Virtual</span>
-                <span class="meta-tag">Duration: {{ $course['duration'] ?? '6 Weeks' }}</span>
-                <span class="meta-tag">Level: {{ $launch['level'] ?? 'Beginner' }}</span>
-                <div class="training-buttons">
-                    <a href="#" class="btn-outline">Inquiry</a>
-                    <a href="#" class="btn-primary register-btn">Register Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-@empty
-    <p>No upcoming trainings scheduled.</p>
-@endforelse
+            <ul class="learn-list">
+                @forelse($topics as $topic)
+
+                <li>
+                    <strong>{{ $topic['title'] ?? 'Untitled' }}</strong>
+                    –
+                   {!! $topic['description'] ?? '' !!}
+                </li>
+
+                @empty
+
+                <li>Introduction and basic overview of the course topics.</li>
+
+                @endforelse
+            </ul>
 
         </div>
-        <!-- TOP ACTION BAR: Download PDF, Print, Back to Courses -->
+
+        <!-- UPCOMING -->
+        
+
+        <!-- ACTION BAR -->
         <div class="top-action-bar">
+
             <div class="action-left">
+
                 <a href="#" class="action-link" id="downloadPdf">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2" />
-                        <rect x="3" y="4" width="18" height="12" rx="2" ry="2" stroke="currentColor or blue" />
-                    </svg>
-                    <button onclick="downloadPDF()" class="pdf-btn">Download PDF</button>
+
+                    <button onclick="downloadPDF()" class="pdf-btn">
+                        Download PDF
+                    </button>
+
                 </a>
+
                 <a href="#" class="action-link" onclick="window.print(); return false;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
                     Print
                 </a>
-            </div>
-            <div class="action-right">
-               <a href="{{ route('frontend.courses') }}" class="back-link">
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
+            </div>
+
+            <div class="action-right">
+
+                <a href="{{ route('frontend.courses') }}" class="back-link">
                     Back to Courses
                 </a>
+
             </div>
+
         </div>
+
     </div>
+</div>
+
+
+
 <!-- INQUIRY MODAL (matches the image exactly) -->
 <!-- INQUIRY MODAL (matches the image exactly) -->
 <div id="inquiryModal" class="modal">
