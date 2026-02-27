@@ -50,12 +50,15 @@
 
                             <td>
                                 <!-- View Details Modal Trigger -->
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#detailsModal{{ $enrollment['_id'] }}">
-                                    View
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#detailsModal{{ $enrollment['_id'] }}" style="background-color: #16a34a;
+    color: #fef3c7;">
+                                    
+                                View
                                 </button>
 
                                 <!-- Delete Form -->
-                                <form action="{{ route('admin.course-enrollments.destroy', $enrollment['_id']) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this enrollment?');">
+                                <form action="{{ route('admin.course-enrollments.destroy', $enrollment['_id']) }}" method="POST" class="d-inline" style="background-color: #dc3545;
+    color: #fef3c7;" onsubmit="return confirm('Are you sure you want to delete this enrollment?');">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-sm btn-danger">Delete</button>

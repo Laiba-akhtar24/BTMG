@@ -99,7 +99,7 @@ label {
     <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
         <div>
-            <h2>Manage Topics</h2>
+            <h2 style="color: #343a40;">Manage Topics</h2>
             <p class="text-muted">{{ $course['name'] ?? '' }}</p>
         </div>
         <div class="mt-2">
@@ -112,7 +112,7 @@ label {
     <!-- Add Topic Form -->
     <div class="card shadow-sm mb-4 topic-form-card">
         <div class="card-body">
-            <h5 class="mb-3">Add Topic</h5>
+            <h5 class="mb-3" style="color: #343a40;">Add Topic</h5>
 
             <form action="{{ route('admin.topics.store', $courseId) }}" method="POST" id="topicForm" class="topic-form">
                 @csrf
@@ -138,7 +138,7 @@ label {
                     <label class="form-check-label" for="topicStatus">Active</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Add Topic</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #343a40;">Add Topic</button>
             </form>
         </div>
     </div>
@@ -175,7 +175,7 @@ label {
                                     </td>
                                     <td>
                                         <div class="d-flex flex-column align-items-start gap-1">
-                                            <a href="{{ route('admin.topics.edit', (string)$topic['_id']) }}" class="btn btn-sm btn-warning mb-1">Edit</a>
+                                            <a href="{{ route('admin.topics.edit', (string)$topic['_id']) }}" class="btn btn-sm btn-warning mb-1 edit">Edit</a>
 
                                             <form action="{{ route('admin.topics.destroy', $topic['_id']) }}" method="POST" style="display:inline-block;">
                                                 @csrf

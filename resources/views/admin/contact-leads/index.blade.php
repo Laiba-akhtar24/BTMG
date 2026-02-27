@@ -31,7 +31,7 @@
                 <td>{{ $lead['viewed'] ?? 'Not Viewed' }}</td>
                 <!-- Trigger Button -->
                 <td>
-                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal{{ $lead['_id'] }}">
+                    <button class="btn btn-sm btn-primary edit" data-bs-toggle="modal" data-bs-target="#contactModal{{ $lead['_id'] }}">
                         View Details
                     </button>
                 </td>

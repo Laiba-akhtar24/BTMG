@@ -43,12 +43,12 @@
                                         <span class="badge bg-secondary">{{ $ld['inquiries'] ?? 0 }}</span>
                                     </div>
 
-                                    <a href="{{ route('admin.launch-dates.edit', (string)$ld['_id']) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{ route('admin.launch-dates.edit', (string)$ld['_id']) }}" class="btn btn-sm btn-warning edit" id="edit">Edit</a>
 
                                     <form action="{{ route('admin.launch-dates.destroy', (string)$ld['_id']) }}" method="POST" onsubmit="return confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        <button type="submit" id="delete" class="btn btn-sm btn-danger delete">Delete</button>
                                     </form>
 
                                 </div>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid py-4">
 
-    <h2 class="fw-bold text-primary mb-4">Edit Category</h2>
+    <h2 class="fw-bold text-primary mb-4" >Edit Category</h2>
 
     {{-- SHOW VALIDATION ERRORS --}}
     @if ($errors->any())

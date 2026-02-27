@@ -54,7 +54,8 @@
                                             <!-- Edit Button -->
                                             <a href="{{ route('admin.categories.edit', $category['_id']) }}"
                                                class="btn btn-sm"
-                                               style="background-color:#fef3c7; color:#92400e;">
+                                               style=" background-color: #16a34a;
+    color: #fef3c7;">
                                                 Edit
                                             </a>
 
@@ -66,7 +67,8 @@
                                                 @method('DELETE')
                                                 <button type="submit"
                                                         class="btn btn-sm"
-                                                        style="background-color:#fee2e2; color:#991b1b;">
+                                                        style=" background-color: #dc3545;
+    color: #fef3c7;">
                                                     Delete
                                                 </button>
                                             </form>
