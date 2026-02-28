@@ -875,26 +875,6 @@ window.onclick = function(e) {
     }
 };
 </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    ClassicEditor
-        .create(document.querySelector('#description'), {
-            toolbar: [
-                'bold',
-                'italic',
-                'underline',
-                '|',
-                'numberedList',
-                'bulletedList',
-                '|',
-                'undo',
-                'redo'
-            ]
-        })
-        .catch(error => {
-            console.error(error);
-        });
-});
-</script>
+
 
 @endsection 

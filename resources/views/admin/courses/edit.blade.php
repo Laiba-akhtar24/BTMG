@@ -3,6 +3,7 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/edit-course.css') }}">
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
 <div class="edit-course-wrapper">
     <div class="edit-course-card">
@@ -47,7 +48,7 @@
 
             <div class="form-group">
                 <label class="form-label">Course Description</label>
-                <textarea name="description" rows="4" class="form-control">{{ $course->description ?? '' }}</textarea>
+                <textarea id="description" name="description" rows="4" class="form-control">{{ $course->description ?? '' }}</textarea>
             </div>
 
             <div class="form-group">
@@ -191,5 +192,25 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSkillsHidden();
 });
 </script>
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    ClassicEditor
+        .create(document.querySelector('#description'), {
+            toolbar: [
+                'bold',
+                'italic',
+                'underline',
+                '|',
+                'numberedList',
+                'bulletedList',
+                '|',
+                'undo',
+                'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+});
+</script>
 @endsection
