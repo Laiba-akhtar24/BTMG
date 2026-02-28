@@ -17,7 +17,7 @@
 <div class="d-flex">
 
     <!-- Sidebar -->
-    <div class="sidebar bg-dark text-white vh-100 p-3" style="width:280px;">
+   <div class="sidebar bg-dark text-white  p-3" style="width:280px;">
         <h3 class="mb-4">BTMG Trainings</h3>
         <nav class="nav flex-column">
 
