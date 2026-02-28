@@ -7,7 +7,8 @@
 <div class="edit-course-wrapper">
     <div class="edit-course-card">
 
-        <h2 class="edit-course-title">
+        <h2 class="edit-course-title" style="text-align: left;"
+        >
             Edit Course
         </h2>
 
@@ -33,11 +34,14 @@
                  <div>
                 <label for="category">Course Category</label>
                 <select name="category" id="category" required>
-                    <option value="" disabled selected>Select Category</option>
-                    @foreach($categories as $cat)
-                        <option value="{{ $cat['name'] }}">{{ $cat['name'] }}</option>
-                    @endforeach
-                </select>
+    <option value="" disabled>Select Category</option>
+    @foreach($categories as $cat)
+        <option value="{{ $cat['name'] }}"
+            {{ (isset($course->category) && $course->category == $cat['name']) ? 'selected' : '' }}>
+            {{ $cat['name'] }}
+        </option>
+    @endforeach
+</select>
             </div>
             </div>
 

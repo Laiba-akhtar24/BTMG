@@ -3,7 +3,8 @@
 @section('content')
 <div class="container-fluid py-4">
 
-    <h2 class="fw-bold text-primary mb-4" >Edit Category</h2>
+    <h2 class=""style="color: #343a40 ;
+    text-align: left;"  >Edit Category</h2>
 
     {{-- SHOW VALIDATION ERRORS --}}
     @if ($errors->any())
@@ -54,11 +55,11 @@
                            required>
                 </div>
 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary px-4">
-                        Update Category
-                    </button>
-                </div>
+                   <div class="text-start mt-3">
+    <button type="submit" class="btn btn-primary px-4">
+        Save Category
+    </button>
+</div>
 
             </form>
 

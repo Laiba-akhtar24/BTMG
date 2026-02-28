@@ -5,7 +5,7 @@
 
     <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-primary " style="color: #343a40;">Add New Category</h2>
+        <h2 class="" style="color: #343a40 ;">Add New Category</h2>
         <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
             Back
         </a>
@@ -64,11 +64,11 @@
                 </div>
 
                 <!-- Submit Button -->
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary px-4">
-                        Save Category
-                    </button>
-                </div>
+               <div class="text-start mt-3">
+    <button type="submit" class="btn btn-primary px-4">
+        Save Category
+    </button>
+</div>
 
             </form>
 

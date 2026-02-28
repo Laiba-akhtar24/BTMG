@@ -3,11 +3,14 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/course-form.css') }}">
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
 <div class="flex justify-center mt-10">
     <div class="container">
 
-        <h2>Add New Course</h2>
+        <h2 style="text-align: left;"
+        >
+            Add New Course</h2>
 
         <form action="{{ route('admin.courses.store') }}" method="POST" enctype="multipart/form-data" id="courseForm">
             @csrf
@@ -108,6 +111,27 @@
 </div>
 
 <!-- JS: Skills & Duration -->
+ <script>
+document.addEventListener('DOMContentLoaded', function() {
+    ClassicEditor
+        .create(document.querySelector('#description'), {
+            toolbar: [
+                'bold',
+                'italic',
+                'underline',
+                '|',
+                'numberedList',
+                'bulletedList',
+                '|',
+                'undo',
+                'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+});
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const skillInput = document.getElementById('skillInput');

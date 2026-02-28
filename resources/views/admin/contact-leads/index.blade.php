@@ -42,13 +42,13 @@
                     <div class="modal-content">
 
                       <!-- Modal Header -->
-                      <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title" id="contactModalLabel{{ $lead['_id'] }}">
-                            <i class="fas fa-envelope me-2"></i> Contact Details
-                            <small class="d-block text-white-50" style="font-size: 12px;">View & Reply</small>
-                        </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
+                      <div class="modal-header text-white" style="background-color:  #343a40;">
+    <h5 class="modal-title" id="contactModalLabel{{ $lead['_id'] }}">
+        <i class="fas fa-envelope me-2"></i> Contact Details
+        <small class="d-block text-white-50" style="font-size: 12px;">View & Reply</small>
+    </h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
 
                       <!-- Modal Body -->
                       <div class="modal-body">
