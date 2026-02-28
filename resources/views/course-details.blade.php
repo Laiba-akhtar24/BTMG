@@ -443,7 +443,7 @@ button[type="submit"]:hover {
             <div class="course-left">
                 <!-- DESCRIPTION -->
                 <div class="course-description">
-                    {!! nl2br(e($course['description'] ?? 'Create charts and graphs to visualize data, apply formatting, sort data, and perform basic data analysis.')) !!}
+                    {!! $course['description'] ?? 'Create charts and graphs to visualize data, apply formatting, sort data, and perform basic data analysis.' !!}
                 </div>
 
                 <!-- META INFO BELOW DESCRIPTION -->
@@ -875,6 +875,26 @@ window.onclick = function(e) {
     }
 };
 </script>
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    ClassicEditor
+        .create(document.querySelector('#description'), {
+            toolbar: [
+                'bold',
+                'italic',
+                'underline',
+                '|',
+                'numberedList',
+                'bulletedList',
+                '|',
+                'undo',
+                'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+});
+</script>
 
 @endsection 
